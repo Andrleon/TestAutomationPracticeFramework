@@ -56,4 +56,8 @@ public abstract class CommonPage extends BasePageObject {
         navigationBarPageElement = new NavigationBarPageElement(driver);
         searchBoxPageElement = new SearchBoxPageElement(driver);
     }
+
+    public SearchResultsPage searchFor(String searchQuery){
+        return searchBoxPageElement.searchFor(searchQuery);
+    }
 }

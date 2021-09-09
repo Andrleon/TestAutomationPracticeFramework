@@ -21,8 +21,7 @@ class CommonElementsTest extends BaseTest{
     @Test
     void presenceOfCommonElementsOnTheSearchResultPage() {
         HomePage homePage = new HomePage(webDriver);
-        SearchResultsPage searchResultsPage = homePage.open()
-                .getSearchBoxPageElement().searchFor("test");
+        SearchResultsPage searchResultsPage = homePage.open().searchFor("test");
 
         checkPresenceOfCommonElementsOnThePage(searchResultsPage);
     }
