@@ -1,11 +1,6 @@
 package homePageTests;
 
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.CommonPage;
 import pages.HomePage;
 import pages.SearchResultsPage;
@@ -13,17 +8,10 @@ import pages.SearchResultsPage;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CommonElementsTest {
-    private WebDriver webDriver;
-
-    @BeforeEach
-    public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        webDriver = new ChromeDriver();
-    }
+class CommonElementsTest extends BaseTest{
 
     @Test
-    public void presenceOfCommonElementsOnTheHomePage() {
+    void presenceOfCommonElementsOnTheHomePage() {
         HomePage homePage = new HomePage(webDriver);
         homePage.open();
 
@@ -31,14 +19,13 @@ public class CommonElementsTest {
     }
 
     @Test
-    public void presenceOfCommonElementsOnTheSearchResultPage() {
+    void presenceOfCommonElementsOnTheSearchResultPage() {
         HomePage homePage = new HomePage(webDriver);
         SearchResultsPage searchResultsPage = homePage.open()
                 .getSearchBoxPageElement().searchFor("test");
 
         checkPresenceOfCommonElementsOnThePage(searchResultsPage);
     }
-
 
     private void checkPresenceOfCommonElementsOnThePage(CommonPage page) {
         assertAll("Check presence of common elements on the page",
@@ -70,9 +57,4 @@ public class CommonElementsTest {
 
     }
 
-    @AfterEach
-    public void tearDown() {
-        webDriver.quit();
-        webDriver = null;
-    }
 }
