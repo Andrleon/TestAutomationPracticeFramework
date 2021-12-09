@@ -5,10 +5,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import utils.Browsers;
+import utils.PropertyService;
 import utils.WebDriverUtil;
 
 public abstract class  BaseTest {
-    protected static final Browsers browser = Browsers.fromString("phantomjs");
+    protected static final Browsers browser = Browsers.fromString(PropertyService.getBrowser());
 
     protected WebDriver webDriver;
     @BeforeAll
