@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePageObject;
+import pages.BasePage;
 import pages.SearchResultsPage;
 
-public class SearchBoxPageElement extends BasePageObject {
+public class SearchBoxPageElement extends BasePage {
 
     @FindBy(id = "search_query_top")
     private WebElement searchField;

@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePageObject;
+import pages.BasePage;
 
 import java.util.List;
 
-public class NavigationBarPageElement extends BasePageObject {
+public class NavigationBarPageElement extends BasePage {
 
     @FindAll(
             @FindBy(xpath = "//header//nav/*")
@@ -23,7 +23,7 @@ public class NavigationBarPageElement extends BasePageObject {
     private WebElement contactUsButton;
 
     @FindBy(xpath = "//header//nav/div[@class='header_user_info']")
-    private WebElement SignInButton;
+    private WebElement signInButton;
 
     public NavigationBarPageElement(WebDriver driver) {
         super(driver);
@@ -39,7 +39,7 @@ public class NavigationBarPageElement extends BasePageObject {
     }
 
     public WebElement getSignInButton() {
-        return SignInButton;
+        return signInButton;
     }
 
     public int getCountOfElements(){

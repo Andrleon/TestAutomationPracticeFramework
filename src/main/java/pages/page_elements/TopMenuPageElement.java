@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePageObject;
+import pages.BasePage;
 
 import java.util.List;
 
-public class TopMenuPageElement extends BasePageObject {
+public class TopMenuPageElement extends BasePage {
 
     @FindAll(
             @FindBy(xpath = "//div[@id='block_top_menu']/ul/*")
