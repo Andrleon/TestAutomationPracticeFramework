@@ -4,7 +4,6 @@ import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import pages.page_elements.*;
 
 public class CommonPage extends BasePage {
@@ -43,12 +42,6 @@ public class CommonPage extends BasePage {
 
     public FooterPageElement getFooterPageElement() {
         return footerPageElement;
-    }
-
-    protected void initElements() {
-        PageFactory.initElements(driver, this);
-        navigationBarPageElement = new NavigationBarPageElement(driver);
-        searchBoxPageElement = new SearchBoxPageElement(driver);
     }
 
     public SearchResultsPage searchFor(String searchQuery){

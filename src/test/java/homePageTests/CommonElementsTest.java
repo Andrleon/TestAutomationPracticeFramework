@@ -1,6 +1,8 @@
 package homePageTests;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.CommonPage;
 import pages.HomePage;
 import pages.SearchResultsPage;
@@ -10,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CommonElementsTest extends BaseTest{
 
+    private Logger log = LoggerFactory.getLogger(getClass());
     @Test
     void presenceOfCommonElementsOnTheHomePage() {
         HomePage homePage = new HomePage(webDriver);
@@ -27,8 +30,9 @@ class CommonElementsTest extends BaseTest{
     }
 
     private void checkPresenceOfCommonElementsOnThePage(CommonPage page) {
+        log.info("checkPresenceOfCommonElementsOnThePage");
         assertAll("Check presence of common elements on the page",
-                () -> assertTrue(page.getBanner().isDisplayed(),
+                () -> assertTrue(page.waitForElement(page.getBanner()).isDisplayed(),
                         "Banner is not displayed"),
                 () -> assertTrue(page.getNavigationBarPageElement().isAllElementsAreDisplayed(),
                         "Not all elements are displayed on the Navigation Bar"),

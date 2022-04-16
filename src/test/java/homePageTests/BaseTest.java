@@ -8,23 +8,21 @@ import utils.Browsers;
 import utils.PropertyService;
 import utils.WebDriverUtil;
 
-public abstract class  BaseTest {
+public abstract class BaseTest {
     protected static final Browsers browser = Browsers.fromString(PropertyService.getBrowser());
 
     protected WebDriver webDriver;
-    @BeforeAll
-    protected static void webDriverSetup() {
-        WebDriverUtil.setupWebDriver(browser);
-    }
 
     @BeforeEach
     protected void setup() {
         webDriver = WebDriverUtil.getDriver(browser);
+      //  webDriver.manage().window().maximize();
     }
 
     @AfterEach
     protected void tearDown() {
-        webDriver.quit();
+        if (webDriver != null)
+            webDriver.quit();
         webDriver = null;
     }
 }

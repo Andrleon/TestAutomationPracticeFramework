@@ -15,8 +15,8 @@ public class HomePage extends CommonPage {
     }
 
     public HomePage open() {
+        logger.info(String.format("Opening home page %s", HOME_URL));
         driver.get(HOME_URL);
-        initElements();
         return this;
     }
 }

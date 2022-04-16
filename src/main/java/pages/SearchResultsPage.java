@@ -7,7 +7,6 @@ public class SearchResultsPage extends CommonPage{
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
 

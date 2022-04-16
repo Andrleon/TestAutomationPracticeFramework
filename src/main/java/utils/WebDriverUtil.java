@@ -6,42 +6,32 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class WebDriverUtil {
+    private static Logger log = LoggerFactory.getLogger(WebDriverUtil.class);
     private WebDriverUtil() {
-    }
-
-    public static void setupWebDriver(Browsers browser) {
-        switch (browser) {
-            case CHROME:
-                WebDriverManager.chromedriver().setup();
-                break;
-            case IE:
-                WebDriverManager.iedriver().setup();
-                break;
-            case EDGE:
-                WebDriverManager.edgedriver().setup();
-                break;
-            case FIREFOX:
-                WebDriverManager.firefoxdriver().setup();
-                break;
-            default:
-                throw new IllegalArgumentException(String.format("An unknown browser \"%s\"", browser));
-        }
     }
 
     public static WebDriver getDriver(Browsers browser) {
         switch (browser) {
             case CHROME:
+                WebDriverManager.chromedriver().setup();
                 return new ChromeDriver();
             case IE:
+                WebDriverManager.iedriver().setup();
                 return new InternetExplorerDriver();
             case EDGE:
+                WebDriverManager.edgedriver().setup();
                 return new EdgeDriver();
             case FIREFOX:
+                WebDriverManager.firefoxdriver().setup();
                 return new FirefoxDriver();
             default:
-                throw new IllegalArgumentException(String.format("An unknown browser \"%s\"", browser));
+                String errorMessage = String.format("The browser name '%s' is not recognized", browser);
+                log.error(errorMessage);
+                throw new IllegalArgumentException(errorMessage);
         }
     }
 }

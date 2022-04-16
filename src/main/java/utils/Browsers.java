@@ -1,12 +1,17 @@
 package utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public enum Browsers {
     CHROME("chrome"),
     FIREFOX("firefox"),
     EDGE("edge"),
-    IE("ie");
+    IE("ie"),
+    OPERA("opera");
 
     private String browserShortName;
+    private static Logger log = LoggerFactory.getLogger(Browsers.class);
 
     Browsers(String browserShortName) {
         this.browserShortName = browserShortName;
@@ -22,6 +27,8 @@ public enum Browsers {
                 return b;
             }
         }
-        throw new IllegalArgumentException("An unknown browser " + browser);
+        String errorMessage = "Unknown browser " + browser;
+        log.error(errorMessage);
+        throw new IllegalArgumentException(errorMessage);
     }
 }
